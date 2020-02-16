@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.1
+-- version 4.9.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 15, 2020 at 12:24 AM
+-- Generation Time: Feb 17, 2020 at 12:46 AM
 -- Server version: 10.4.11-MariaDB
--- PHP Version: 7.2.27
+-- PHP Version: 7.4.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -31,8 +31,16 @@ SET time_zone = "+00:00";
 CREATE TABLE `kelas` (
   `id_kelas` int(11) NOT NULL,
   `nama_kelas` varchar(10) NOT NULL,
-  `kompetensi_keahlian` varchar(50) NOT NULL
+  `kompetensi_keahlian` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `kelas`
+--
+
+INSERT INTO `kelas` (`id_kelas`, `nama_kelas`, `kompetensi_keahlian`) VALUES
+(1, '12 RPL 1', 'REKAYASA PERANGKAT LUNAK'),
+(2, '12 TKJ 3', 'TEKNIK KOMPUTER DAN JARINGAN');
 
 -- --------------------------------------------------------
 
@@ -51,6 +59,13 @@ CREATE TABLE `pembayaran` (
   `jumlah_bayar` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `pembayaran`
+--
+
+INSERT INTO `pembayaran` (`id_pembayaran`, `petugas_id`, `nisn`, `tgl_bayar`, `bulan_dibayar`, `tahun_dibayar`, `spp_id`, `jumlah_bayar`) VALUES
+(5, 2, '16122001', '2020-02-17', 'Februari', '2020', 3, 200000);
+
 -- --------------------------------------------------------
 
 --
@@ -64,6 +79,14 @@ CREATE TABLE `petugas` (
   `level` enum('admin','petugas','','') NOT NULL,
   `nama_petugas` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `petugas`
+--
+
+INSERT INTO `petugas` (`id_petugas`, `username`, `password`, `level`, `nama_petugas`) VALUES
+(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin', 'ADMIN SATU'),
+(2, 'petugas', 'afb91ef692fd08c445e8cb1bab2ccf9c', 'petugas', 'PETUGAS SATU');
 
 -- --------------------------------------------------------
 
@@ -81,6 +104,14 @@ CREATE TABLE `siswa` (
   `kelas_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `siswa`
+--
+
+INSERT INTO `siswa` (`nisn`, `nis`, `nama`, `alamat`, `no_telp`, `spp_id`, `kelas_id`) VALUES
+('16122001', '171810191', 'FIKRI SUHERI', 'Kawali,Ciamis', '081222627526', 3, 1),
+('17122001', '171810192', 'AHMAD IKI', 'Kawali', '082878965678', 1, 2);
+
 -- --------------------------------------------------------
 
 --
@@ -92,6 +123,15 @@ CREATE TABLE `spp` (
   `tahun` varchar(4) NOT NULL,
   `nominal` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `spp`
+--
+
+INSERT INTO `spp` (`id_spp`, `tahun`, `nominal`) VALUES
+(1, '2024', 1200000),
+(2, '2019', 1500000),
+(3, '2021', 2000000);
 
 --
 -- Indexes for dumped tables
@@ -140,25 +180,25 @@ ALTER TABLE `spp`
 -- AUTO_INCREMENT for table `kelas`
 --
 ALTER TABLE `kelas`
-  MODIFY `id_kelas` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_kelas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `pembayaran`
 --
 ALTER TABLE `pembayaran`
-  MODIFY `id_pembayaran` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_pembayaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `petugas`
 --
 ALTER TABLE `petugas`
-  MODIFY `id_petugas` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_petugas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `spp`
 --
 ALTER TABLE `spp`
-  MODIFY `id_spp` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_spp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints for dumped tables

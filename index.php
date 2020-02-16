@@ -15,13 +15,13 @@
         <h2>APLIKASI PEMBAYARAN SPP</h2>
     </div>
     <div class="box">
-        <form action="">
+        <form action="ceklogin.php" method="post">
             <div class="container">
                 <label for="username">Usename</label>
                 <input type="text" name="username" id="username" placeholder="username" required>
 
                 <label for="password">Password</label>
-                <input type="password" name="username" id="password" placeholder="password" required>
+                <input type="password" name="password" id="password" placeholder="password" required>
                 <button type="submit">Login</button>
                 <div class="center">
                     <small class="">Dibuat Oleh Fikri Suheri</small>
